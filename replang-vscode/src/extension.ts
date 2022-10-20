@@ -352,13 +352,13 @@ function redis_publish_data(wordText: string, fastmapper=false) {
 
 export function activate(context: vscode.ExtensionContext) {
 
-	context.subscriptions.push(vscode.commands.registerCommand('ulang.fastMapper', () => {
+  context.subscriptions.push(vscode.commands.registerCommand('ulang.fastMapper', () => {
 
-		const editor = vscode.window.activeTextEditor;
-		if (editor) {
-			const wordRange = editor.document.getWordRangeAtPosition(editor.selection.start);
-			const wordText = editor.document.getText(wordRange);
-			const metaWorkspacesFspath = vscode.workspace.workspaceFolders?.map((folder) => folder.uri.fsPath);
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+      const wordRange = editor.document.getWordRangeAtPosition(editor.selection.start);
+      const wordText = editor.document.getText(wordRange);
+      const metaWorkspacesFspath = vscode.workspace.workspaceFolders?.map((folder) => folder.uri.fsPath);
       const metaWorkspacesPath = vscode.workspace.workspaceFolders?.map((folder) => folder.uri.path);
       const metaDocument = {
         filename: vscode.window.activeTextEditor?.document.fileName,
@@ -366,7 +366,7 @@ export function activate(context: vscode.ExtensionContext) {
         path: vscode.window.activeTextEditor?.document.uri.path,
         language: vscode.window.activeTextEditor?.document.languageId,
       };
-			const data = {
+      const data = {
         content: 'fastmapper:' + wordText,
         meta: {
           metaWorkspacesFspath,
@@ -374,17 +374,17 @@ export function activate(context: vscode.ExtensionContext) {
           metaDocument,
         }
       };
-			redis_publish(data);
-		}
-	}));
+      redis_publish(data);
+    }
+  }));
 
-	const disposable = vscode.commands.registerCommand('ulang.selectRange', function () {
+  const disposable = vscode.commands.registerCommand('ulang.selectRange', function () {
 
-		const editor = vscode.window.activeTextEditor;
-		if (editor) {
-			const document = editor.document;
-			const selection = editor.selection;
-			const word = document.getText(selection);
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+      const document = editor.document;
+      const selection = editor.selection;
+      const word = document.getText(selection);
 
       // const metaFileName = vscode.window.activeTextEditor?.document.fileName;
       const metaWorkspacesFspath = vscode.workspace.workspaceFolders?.map((folder) => folder.uri.fsPath);
@@ -403,9 +403,9 @@ export function activate(context: vscode.ExtensionContext) {
           metaDocument,
         }
       };
-			redis_publish(data);
-		}
-	});
+      redis_publish(data);
+    }
+  });
 
   context.subscriptions.push(disposable);
 
