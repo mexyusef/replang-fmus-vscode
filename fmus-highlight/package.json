@@ -1,0 +1,131 @@
+{
+  "name": "language-configuration-sample",
+  "displayName": "Language Configuration Sample",
+  "description": "Language Configuration Sample",
+  "version": "0.0.1",
+  "publisher": "fmus-highlight",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mexyusef/vscode-fmus"
+  },
+  "engines": {
+    "vscode": "^1.28.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "fmus",
+        "icon": {
+          "light": "assets/icons/fmus.svg",
+          "dark": "assets/icons/fmus.svg"
+        },
+        "extensions": [
+          ".fmus"
+        ],
+        "aliases": [
+          "fmus",
+          "Fmus",
+          "Famous"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "mk",
+        "icon": {
+          "light": "assets/icons/mk.svg",
+          "dark": "assets/icons/mk.svg"
+        },
+        "extensions": [
+          ".mk"
+        ],
+        "aliases": [
+          "fmus",
+          "Fmus",
+          "Famous"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "us",
+        "icon": {
+          "light": "assets/icons/us.svg",
+          "dark": "assets/icons/us.svg"
+        },
+        "extensions": [
+          ".us"
+        ],
+        "aliases": [
+          "us",
+          "US"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "fm",
+        "icon": {
+          "light": "assets/icons/fm.svg",
+          "dark": "assets/icons/fm.svg"
+        },
+        "extensions": [
+          ".fm"
+        ],
+        "aliases": [
+          "fm",
+          "FM"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "fmus",
+        "scopeName": "source.fmus",
+        "path": "./syntaxes/fmus.tmGrammar.json"
+      },
+      {
+        "language": "mk",
+        "scopeName": "source.mk",
+        "path": "./syntaxes/mk.tmGrammar.json"
+      },
+      {
+        "language": "us",
+        "scopeName": "source.us",
+        "path": "./syntaxes/us.tmGrammar.json"
+      },
+      {
+        "language": "fm",
+        "scopeName": "source.fm",
+        "path": "./syntaxes/fm.tmGrammar.json"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "fmus.fmus",
+          "name": "Fmus/fmus file",
+          "icon": "assets/icons/fmus.svg",
+          "visibility": "collapsed"
+        },
+        {
+          "id": "fmus.us",
+          "name": "Fmus/us file",
+          "icon": "assets/icons/us.svg",
+          "visibility": "collapsed"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "fmus.fmus",
+        "contents": "Fmus/fmus file contains several entries, each of which corresponds to a Fmus/us file."
+      },
+      {
+        "view": "fmus.us",
+        "contents": "Fmus/us file contains the whole program to be executed by the Fmus tooling."
+      }
+    ]
+  }
+}

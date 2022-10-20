@@ -1,0 +1,38 @@
+{
+    "scopeName": "source.fmus",
+    "patterns": [{ "include": "#expression" }],
+    "repository": {
+      "expression": {
+        "patterns": [
+          { "include": "#letter" }, 
+          { "include": "#symbol" }, 
+          { "include": "#source-code" },
+          { "include": "#paren-expression" }
+        ]
+      },
+      "letter": {
+        "match": "index/fmus|__PWD|__CURDIR__|__FILE__|__INPUT__",
+        "name": "keyword"
+      },
+      "symbol": {
+        "match": "\\s+\\$\\*|^\\s*@|^\\s*#|\\s+%|,d\\b|,f\\b|~unless|~while|~if|~else|\\?pick",
+        "name": "keyword"
+      },
+      "paren-expression": {
+        "begin": "^--%\\s+\\S+.*",
+        "end": "^--#",
+        "beginCaptures": {
+          "0": { "name": "entity.name.function" }
+        },
+        "endCaptures": {
+          "0": { "name": "entity.name.function" }
+        },
+        "name": "expression.group",
+        "patterns": [{ "include": "#expression" }]
+      },
+      "source-code": {
+        "match": "^```([\\S\\s]+)```",
+        "name": "keyword.other"
+      }
+    }
+  }

@@ -1,0 +1,53 @@
+{
+    "scopeName": "source.mk",
+    "patterns": [{ "include": "#expression" }],
+    "repository": {
+      "expression": {
+        "patterns": [
+          { "include": "#letter" }, 
+          { "include": "#symbol" },          
+          { "include": "#paren-expression" },
+          { "include": "#source-code-4" },
+          { "include": "#source-code-3" },
+          { "include": "#source-code-2" },
+          { "include": "#source-code" }
+        ]
+      },
+      "letter": {
+        "match": "index/fmus|__PWD|__CURDIR__|__FILE__|__INPUT__",
+        "name": "keyword"
+      },
+      "symbol": {
+        "match": "\\s+\\$\\*|^\\s*@|^\\s*#|\\s+%|,d\\b|,f\\b|~unless|~while|~if|~else|\\?pick",
+        "name": "keyword"
+      },
+      "paren-expression": {
+        "begin": "^--%\\s+\\S+.*",
+        "end": "^--#",
+        "beginCaptures": {
+          "0": { "name": "entity.name.function" }
+        },
+        "endCaptures": {
+          "0": { "name": "entity.name.function" }
+        },
+        "name": "expression.group",
+        "patterns": [{ "include": "#expression" }]
+      },
+      "source-code-4": {
+        "match": "^``````([\\S\\s]+)``````",
+        "name": "keyword.control"
+      },
+      "source-code-3": {
+        "match": "^`````([\\S\\s]+)`````",
+        "name": "keyword.declaration"
+      },
+      "source-code-2": {
+        "match": "^````([\\S\\s]+)````",
+        "name": "keyword.operator"
+      },
+      "source-code": {
+        "match": "^```([\\S\\s]+)```",
+        "name": "keyword.other"
+      }
+    }
+  }
